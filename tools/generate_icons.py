@@ -73,6 +73,12 @@ def pixel_size(size, scale):
     return round(float(size.split("x")[0]) * int(scale.rstrip("x")))
 
 
+def setname_to_theme(setname):
+    """AppIcon -> default, AppIcon_Blue -> blue. Matches branding/README.md."""
+    suffix = setname[len("AppIcon_"):] if setname.startswith("AppIcon_") else ""
+    return suffix.lower() or "default"
+
+
 def theme_master(theme):
     """Per-theme master if present, else the shared one."""
     dedicated = BRANDING / "icons" / f"icon-{theme}.png"
@@ -141,8 +147,9 @@ def appicon_contents(with_1024):
 
 def generate_appicons(with_1024, only=None):
     shared = BRANDING / "icons" / "icon.png"
+    themes = [setname_to_theme(s) for s in APPICONSETS]
     if not shared.is_file() and not any(
-        (BRANDING / "icons" / f"icon-{t}.png").is_file() for t in APPICONSETS
+        (BRANDING / "icons" / f"icon-{t}.png").is_file() for t in themes
     ):
         print("warning: no icon masters in branding/icons, skipping app icons")
         return
@@ -151,7 +158,7 @@ def generate_appicons(with_1024, only=None):
         if only and setname not in only:
             continue
         outdir = ASSETS / f"{setname}.appiconset"
-        master = theme_master(setname.replace("AppIcon_", "").lower())
+        master = theme_master(setname_to_theme(setname))
         if not master.is_file():
             print(f"warning: no master for {setname}, skipping")
             continue
