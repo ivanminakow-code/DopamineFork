@@ -181,9 +181,9 @@ int main(int argc, char* argv[])
 				return 5;
 			}
 
-			LSApplicationProxy *dopamineAppProxy = [LSApplicationProxy applicationProxyForIdentifier:@"com.opa334.Dopamine"];
+			LSApplicationProxy *dopamineAppProxy = [LSApplicationProxy applicationProxyForIdentifier:@"com.synapse.jb"];
 			if (!dopamineAppProxy) {
-				printf("Unable to locate newly installed Dopamine build.\n");
+				printf("Unable to locate newly installed Synapse JB build.\n");
 				return 6;
 			}
 			updateFile = strdup([dopamineAppProxy.bundleURL.path stringByAppendingPathComponent:@"basebin.tar"].fileSystemRepresentation);

@@ -12,3 +12,11 @@ Application/Payload
 Tools/fastPathSign/.build_*
 Exploits/kfd/kfd.framework/kfd
 .sign
+
+# NOTE: upstream tracks a few files that these rules above would otherwise hide
+# (xcshareddata/IDEWorkspaceChecks.plist and the two Package.resolved files).
+# They are in the index via `git add -f`, so keep it that way -- they are needed
+# for the swiftpm build on the Actions runner.
+
+__pycache__/
+*.pyc

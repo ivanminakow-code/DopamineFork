@@ -3090,7 +3090,8 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dopamine/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Dopamine needs to access your photo library to support picking a boot logo";
+				INFOPLIST_KEY_CFBundleDisplayName = "Synapse JB";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Synapse JB needs to access your photo library to support picking a boot logo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -3105,8 +3106,8 @@
 					"$(PROJECT_DIR)/Dopamine/Dependencies",
 					"$(PROJECT_DIR)/Dopamine/Resources",
 				);
-				MARKETING_VERSION = 3.0.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.opa334.Dopamine;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.synapse.jb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3128,7 +3129,8 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dopamine/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Dopamine needs to access your photo library to support picking a boot logo";
+				INFOPLIST_KEY_CFBundleDisplayName = "Synapse JB";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Synapse JB needs to access your photo library to support picking a boot logo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -3143,8 +3145,8 @@
 					"$(PROJECT_DIR)/Dopamine/Dependencies",
 					"$(PROJECT_DIR)/Dopamine/Resources",
 				);
-				MARKETING_VERSION = 3.0.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.opa334.Dopamine;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.synapse.jb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

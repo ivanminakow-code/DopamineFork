@@ -1,0 +1,46 @@
+# Keep shell scripts and plists LF-only. A CRLF checkout breaks
+# download_bootstraps.sh on the Actions runner.
+#
+# text=auto already leaves real binaries alone; the explicit entries below
+# only cover cases auto-detection gets wrong (extensionless Mach-O slices,
+# images, prebuilt archives).
+* text=auto eol=lf
+
+*.sh text eol=lf
+*.m text eol=lf
+*.mm text eol=lf
+*.h text eol=lf
+*.c text eol=lf
+*.cpp text eol=lf
+*.x text eol=lf
+*.plist text eol=lf
+*.tbd text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.pbxproj text eol=lf
+*.strings text eol=lf
+*.storyboard text eol=lf
+
+# Extensionless Mach-O slice -- auto-detection misses these.
+BaseBin/_external/basebin/fallback/CydiaSubstrate.framework/CydiaSubstrate binary
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+
+*.a binary
+*.d binary
+*.o binary
+*.dylib binary
+*.tar binary
+*.tar.gz binary
+*.tar.zst binary
+*.zst binary
+*.ipa binary
+*.tipa binary
+*.p12 binary
+*.cer binary
+*.mobileprovision binary

@@ -1,4 +1,4 @@
-name: "Dopamine: build and upload"
+name: "Synapse JB: build and upload"
 
 on:
   push:
@@ -12,16 +12,13 @@ on:
     paths-ignore:
       - ".gitignore"
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 1 1 *'
-    - cron: '0 0 1 4 *'
-    - cron: '0 0 30 6 *'
-    - cron: '0 0 28 9 *'
-    - cron: '0 0 27 12 *'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -33,9 +30,20 @@ jobs:
           xcode-version: latest-stable
 
       - name: Checkout
-        uses: actions/checkout@main
+        uses: actions/checkout@v4
         with:
-            submodules: recursive
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Generate artwork
+        run: |
+          set -x
+          if compgen -G "branding/icons/*.png" > /dev/null; then
+            python3 -m pip install --upgrade Pillow
+            python3 tools/generate_icons.py
+          else
+            echo "no branding/icons/*.png, keeping committed artwork"
+          fi
 
       - name: Install Procursus
         uses: dhinakg/procursus-action@main
@@ -88,9 +96,9 @@ jobs:
 
       - name: Download Bootstraps
         run: |
-            set -x
-            cd Application/Dopamine/Resources
-            ./download_bootstraps.sh
+          set -x
+          cd Application/Dopamine/Resources
+          ./download_bootstraps.sh
 
       - name: Build
         run: |
@@ -100,9 +108,10 @@ jobs:
           gmake -j$(sysctl -n hw.logicalcpu) NIGHTLY=1
 
       - name: Upload Artifact
-        id: dopamine-latest-upload
-        uses: actions/upload-artifact@main
+        id: synapse-jb-upload
+        uses: actions/upload-artifact@v4
         with:
-          name: Dopamine
+          name: SynapseJB
           path: |
             ${{ github.workspace }}/Application/Dopamine.ipa
+            ${{ github.workspace }}/Application/Dopamine.tipa
