@@ -39,8 +39,12 @@ jobs:
         run: |
           set -x
           if compgen -G "branding/icons/*.png" > /dev/null; then
-            python3 -m pip install --upgrade Pillow
-            python3 tools/generate_icons.py
+            # macOS ships a PEP 668 "externally managed" python, so pip install
+            # into it is refused. Use a throwaway venv.
+            python3 -m venv .venv-art
+            .venv-art/bin/python -m pip install --quiet --upgrade pip
+            .venv-art/bin/python -m pip install --quiet Pillow
+            .venv-art/bin/python tools/generate_icons.py
           else
             echo "no branding/icons/*.png, keeping committed artwork"
           fi

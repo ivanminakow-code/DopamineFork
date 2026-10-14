@@ -20,3 +20,4 @@ Exploits/kfd/kfd.framework/kfd
 
 __pycache__/
 *.pyc
+.venv-art/
