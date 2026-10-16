@@ -37,9 +37,8 @@
 
 - (BOOL)isUpdateAvailable
 {
-    NSString *latestVersion = [self getLatestReleaseTag];
-    NSString *currentVersion = [self getLaunchedReleaseTag];
-    return [latestVersion numericalVersionRepresentation] > [currentVersion numericalVersionRepresentation];
+    // Update checks disabled in this fork.
+    return NO;
 }
 
 - (NSArray *)getUpdatesInRange:(NSString *)start end:(NSString *)end
@@ -68,22 +67,8 @@
 
 - (NSArray *)getLatestReleases
 {
-    static dispatch_once_t onceToken;
-    static NSArray *releases;
-    dispatch_once(&onceToken, ^{
-        NSURL *url = [NSURL URLWithString:@"https://api.github.com/repos/opa334/Dopamine/releases"];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        if (data) {
-            NSError *error;
-            releases = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-            if (error)
-            {
-                onceToken = 0;
-                releases = @[];
-            }
-        }
-    });
-    return releases;
+    // Update checks disabled in this fork: no network call, no upstream repo.
+    return @[];
 }
 
 - (BOOL)environmentUpdateAvailable
